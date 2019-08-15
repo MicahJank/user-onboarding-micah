@@ -41,14 +41,13 @@ const Error = styled.p`
     margin: 0;
 `;
 
-const UserForm = ( { errors, touched, values, status } ) => {
-
-    const [users, setUsers] = useState([]);
+const UserForm = ( { errors, touched, values, status, addUserFunction } ) => {
+    // const [user, setUser] = useState([]);
 
     useEffect(() => {
         if (status) {
-            setUsers([...users, status]);
-            console.log(users);
+            // setUser([...user, status]);
+            addUserFunction(status);
         }
       
     }, [status]);

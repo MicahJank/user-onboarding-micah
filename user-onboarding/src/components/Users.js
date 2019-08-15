@@ -1,5 +1,19 @@
 import React, { useState, useEffect } from 'react';
 
+import styled from 'styled-components';
+
+import User from './User.js';
+
+
+
+const UsersContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+`;
+
 const Users = ( { userList } ) => {
 
   
@@ -10,8 +24,11 @@ const Users = ( { userList } ) => {
     }
 
     return (
-
-        <div>Im a list of users</div>
+        <UsersContainer>
+            {userList.map((user) => {
+                return <User userInfo={user} key={user.id}/>
+            })}
+        </UsersContainer>
     );
 };
 

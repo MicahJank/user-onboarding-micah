@@ -1,3 +1,6 @@
+html, body, .App, #root {
+  height: 100%;
+}
 .App {
   box-sizing: border-box;
   text-align: center;
