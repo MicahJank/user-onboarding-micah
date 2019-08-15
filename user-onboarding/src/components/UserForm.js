@@ -64,7 +64,10 @@ const UserForm = ( { errors, touched, values, status } ) => {
                     <Field type='checkbox' name='tos' checked={values.tos}/>
                     Terms of Service
                 </label>
-                <button>Submit</button>
+                {touched.tos && errors.tos && (
+                    <Error>{errors.tos}</Error>
+                )}
+                <button type='submit'>Submit</button>
             </Form>
         </FormContainer>
     );
@@ -85,7 +88,7 @@ const formikHOC = withFormik({
         name: Yup.string().required('Name is required'),
         email: Yup.string().required(),
         password: Yup.string().required(),
-        tos: Yup.bool().required()
+        tos: Yup.bool().oneOf([true], 'Terms of Service required')
     }),
     // this sets ups submitting the form
    handleSubmit(values, { setStatus, resetForm }) {
