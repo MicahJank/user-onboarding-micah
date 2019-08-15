@@ -43,6 +43,16 @@ const Error = styled.p`
 
 const UserForm = ( { errors, touched, values, status } ) => {
 
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        if (status) {
+            setUsers([...users, status]);
+            console.log(users);
+        }
+      
+    }, [status]);
+
 
     // Notice the first 4 fields all dont have an 'component' type, this is because formik sets the default component type to input, so its not needed.
     return (
@@ -94,7 +104,7 @@ const formikHOC = withFormik({
    handleSubmit(values, { setStatus, resetForm }) {
        axios.post('https://reqres.in/api/users', values)
         .then(apiData => {
-            console.log('res: ', apiData);
+            // console.log('res: ', apiData);
             setStatus(apiData.data);
             resetForm();
         })
