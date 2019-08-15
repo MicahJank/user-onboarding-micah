@@ -4,8 +4,10 @@ import styled from 'styled-components';
 
 
 const UserCard = styled.div`
+    margin-bottom: 15px;
     width: 250px;
     padding: 20px;
+    background-color: white;
     box-shadow: -4px 5px 38px -14px rgba(0,0,0,1);
 `;
 

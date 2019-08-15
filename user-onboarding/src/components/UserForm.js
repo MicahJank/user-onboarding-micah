@@ -11,12 +11,17 @@ const FormContainer = styled.div`
     form {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
 
         input {
             margin-top: 20px;
             padding: 10px;
             font-size: 1rem;
+            border: none;
+        }
+
+        label {
+            margin-bottom: 10px;
         }
 
         button {
