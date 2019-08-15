@@ -14,7 +14,7 @@ const FormContainer = styled.div`
         align-items: center;
 
         input {
-            margin: 10px;
+            margin-top: 20px;
             padding: 10px;
             font-size: 1rem;
         }
@@ -25,9 +25,20 @@ const FormContainer = styled.div`
            border: none;
            background-color: #0088CC;
            color: white;
-           font-size: 1rem; 
+           font-size: 1rem;
+           cursor: pointer; 
+        }
+
+        p {
+            align-self: flex-start;
         }
     }
+`;
+
+const Error = styled.p`
+    position: relative;
+    color: red;
+    margin: 0;
 `;
 
 const UserForm = ( { errors, touched, values, status } ) => {
@@ -38,10 +49,19 @@ const UserForm = ( { errors, touched, values, status } ) => {
         <FormContainer> 
             <Form>
                 <Field type='text' name='name' placeholder='Name' />
+                {touched.name && errors.name && (
+                    <Error>{errors.name}</Error>
+                )}
                 <Field type='email' name='email' placeholder='Email' />
+                {touched.email && errors.email && (
+                    <Error>{errors.email}</Error>
+                )}
                 <Field type='password' name='password' placeholder='Password' />
+                {touched.password && errors.password && (
+                    <Error>{errors.password}</Error>
+                )}
                 <label>
-                    <Field type='checkbox' name='tos' />
+                    <Field type='checkbox' name='tos' checked={values.tos}/>
                     Terms of Service
                 </label>
                 <button>Submit</button>
@@ -51,6 +71,7 @@ const UserForm = ( { errors, touched, values, status } ) => {
 };
 
 const formikHOC = withFormik({
+    // this sets up setting the values of the inputs
     mapPropsToValues({ name, email, password, tos }) {
         return {
             name: name || '',
@@ -59,14 +80,24 @@ const formikHOC = withFormik({
             tos: tos || false
         };
     },
+    // this sets up form validation
     validationSchema: Yup.object().shape({
         name: Yup.string().required('Name is required'),
         email: Yup.string().required(),
         password: Yup.string().required(),
         tos: Yup.bool().required()
     }),
-   
-})
+    // this sets ups submitting the form
+   handleSubmit(values, { setStatus, resetForm }) {
+       axios.post('https://reqres.in/api/users', values)
+        .then(apiData => {
+            console.log('res: ', apiData);
+            setStatus(apiData.data);
+            resetForm();
+        })
+        .catch(err => alert(err));
+   }
+});
 
 const UserFormWithFormik = formikHOC(UserForm);
 
