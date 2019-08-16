@@ -28,7 +28,7 @@ const Users = ( { userList } ) => {
     return (
         <UsersContainer>
             {userList.map((user) => {
-                return <User userInfo={user} key={user.id}/>
+                return <User userInfo={user} key={user.id} />
             })}
         </UsersContainer>
     );

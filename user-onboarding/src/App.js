@@ -37,7 +37,7 @@ function App() {
 
   const addUser = user => {
     setUsers([...users, user]);
-    console.log(user);
+    // console.log(user);
   };
 
   return (
