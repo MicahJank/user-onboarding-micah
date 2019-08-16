@@ -46,7 +46,7 @@ function App() {
         <div className='background'></div>
         <div className='user-form'>
           <UserForm addUserFunction={addUser} />
-          <Users userList={users} />
+          <Users userList={users} setUsers={setUsers}/>
         </div>
       </Container>
     </div>

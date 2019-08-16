@@ -45,6 +45,7 @@ const UserCard = styled.div`
     }
 
     .delete-icon {
+        border: none;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -55,8 +56,13 @@ const UserCard = styled.div`
         padding: 0 10px 0 20px;
         border-radius: 10px 10px 0 10px;
         color: rgb(217, 220, 224);
+        background-color: #F5F6F8;
         cursor: pointer;
         transition: color 0.2s;
+
+        :focus {
+            outline: none;
+        }
 
         :hover {
             color: #FF4136;
@@ -67,7 +73,7 @@ const UserCard = styled.div`
 `;
 
 
-const User = ( { userInfo } ) => {
+const User = ( { userInfo, deleteFunction } ) => {
 
     return (
         <UserCard>
@@ -84,9 +90,9 @@ const User = ( { userInfo } ) => {
                 <h3>{userInfo.email}</h3>
             </div>
 
-            <div className='delete-icon'>
+            <button onClick={() => { deleteFunction(userInfo) }} className='delete-icon'>
                 <FontAwesomeIcon icon={faTimes} />
-           </div>
+           </button>
         </UserCard>
     );
 };
