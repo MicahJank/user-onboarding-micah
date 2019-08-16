@@ -81,7 +81,7 @@ const UserForm = ( { errors, touched, values, status, addUserFunction } ) => {
                 {touched.tos && errors.tos && (
                     <Error>{errors.tos}</Error>
                 )}
-                <button type='submit'>Submit</button>
+                <button type='submit'>Register</button>
             </Form>
         </FormContainer>
     );
