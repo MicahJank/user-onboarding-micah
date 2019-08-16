@@ -21,10 +21,6 @@ const FormContainer = styled.div`
             align-self: center;
         }
 
-        label {
-            margin-bottom: 10px;
-        }
-
         button {
            width: 100%;
            padding: 10px;
@@ -33,6 +29,7 @@ const FormContainer = styled.div`
            color: white;
            font-size: 1rem;
            cursor: pointer; 
+           margin-top: 20px;
         }
 
         p {
