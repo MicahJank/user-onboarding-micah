@@ -88,6 +88,7 @@ const User = ( { userInfo, deleteFunction } ) => {
             <div className='user-info'>
                 <h2>{userInfo.name}</h2>
                 <h3>{userInfo.email}</h3>
+                <h3>{userInfo.dropdown}</h3>
             </div>
 
             <button onClick={() => { deleteFunction(userInfo) }} className='delete-icon'>

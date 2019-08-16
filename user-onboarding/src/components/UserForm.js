@@ -13,11 +13,12 @@ const FormContainer = styled.div`
         flex-direction: column;
         align-items: flex-start;
 
-        input {
+        input, select {
             margin-top: 20px;
             padding: 10px;
             font-size: 1rem;
             border: none;
+            align-self: center;
         }
 
         label {
@@ -74,6 +75,13 @@ const UserForm = ( { errors, touched, values, status, addUserFunction } ) => {
                 {touched.password && errors.password && (
                     <Error>{errors.password}</Error>
                 )}
+                <Field component='select' name='dropdown' placeholder='Please Select'>
+                    <option>Please Select A Position</option>
+                    <option value='UI Developer'>UI Developer</option>
+                    <option value='Front End Developer'>Front-End Developer</option>
+                    <option value='Back End Developer'>Back-End Developer</option>
+                    <option value='Coffee Maker'>Person Who Makes Coffee</option>
+                </Field>
                 <label>
                     <Field type='checkbox' name='tos' checked={values.tos}/>
                     Terms of Service
@@ -89,12 +97,13 @@ const UserForm = ( { errors, touched, values, status, addUserFunction } ) => {
 
 const formikHOC = withFormik({
     // this sets up setting the values of the inputs
-    mapPropsToValues({ name, email, password, tos }) {
+    mapPropsToValues({ name, email, password, tos, dropdown }) {
         return {
             name: name || '',
             email: email || '',
             password: password || '',
-            tos: tos || false
+            tos: tos || false,
+            dropdown: dropdown || ''
         };
     },
     // this sets up form validation
