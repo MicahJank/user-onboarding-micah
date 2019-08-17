@@ -36,22 +36,18 @@ function App() {
 
   const [users, setUsers] = useState([]);
 
-  const [searching, setSearching] = useState(false);
-
   const [displayedUsers, setDisplayedUsers] = useState([])
 
   useEffect(() => {
 
-    if(!searching) {
-      setDisplayedUsers(users);
-    }
+    setDisplayedUsers(users);
+    console.log('users changed');
 
   }, [users]);
 
 
   const addUser = user => {
     setUsers([...users, user]);
-    // console.log(user);
   };
  
   const createSearchedUsers = (search) => {
@@ -65,6 +61,9 @@ function App() {
     }
   };
 
+  console.log('users: ', users);
+  console.log('displayedUsers: ', displayedUsers);
+
   return (
     <div className="App">
       <Container>
@@ -74,10 +73,10 @@ function App() {
             <UserForm addUserFunction={addUser} />
           </div>
 
-          <SearchForm searchFunction={createSearchedUsers} setSearching={setSearching}/>
+          <SearchForm searchFunction={createSearchedUsers} />
 
           <div className='users'>
-            <Users userList={displayedUsers} setUsers={setUsers}/>
+            <Users users={users} displayedUsers={displayedUsers} setUsers={setUsers}/>
           </div>
         </div>
       </Container>

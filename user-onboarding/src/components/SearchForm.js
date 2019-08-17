@@ -23,16 +23,12 @@ const FormContainer = styled.div`
         cursor: pointer; 
     }
 `;
-const SearchForm = ( { errors, touched, values, status, searchFunction, setSearching } ) => {
+const SearchForm = ( { errors, touched, values, status, searchFunction } ) => {
 
     useEffect(() => {
-        
+
         searchFunction(status);
-        if(status) {
-            // console.log(status);
-            // setSearchedUsers(status);
-            setSearching(true);
-        }
+
     }, [status])
 
     return (
