@@ -23,13 +23,17 @@ const FormContainer = styled.div`
         cursor: pointer; 
     }
 `;
-const SearchForm = ( { errors, touched, values, status } ) => {
+const SearchForm = ( { errors, touched, values, status, searchFunction, setSearching } ) => {
 
-    // useEffect(() => {
-    //     if(status) {
-
-    //     }
-    // }, [status])
+    useEffect(() => {
+        
+        searchFunction(status);
+        if(status) {
+            // console.log(status);
+            // setSearchedUsers(status);
+            setSearching(true);
+        }
+    }, [status])
 
     return (
         <FormContainer>
@@ -51,8 +55,8 @@ const formikHOC = withFormik({
     handleSubmit(values, { setStatus }) {
         axios.post('https://reqres.in/api/users', values)
         .then(apiData => {
-             console.log('res: ', apiData);
-            setStatus(apiData.data);
+            //  console.log('res: ', apiData);
+            setStatus(apiData.data.search);
         })
         .catch(err => alert(err));
     }

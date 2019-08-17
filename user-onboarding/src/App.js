@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import UserForm from './components/UserForm.js';
 import Users from './components/Users.js';
@@ -36,9 +36,33 @@ function App() {
 
   const [users, setUsers] = useState([]);
 
+  const [searching, setSearching] = useState(false);
+
+  const [displayedUsers, setDisplayedUsers] = useState([])
+
+  useEffect(() => {
+
+    if(!searching) {
+      setDisplayedUsers(users);
+    }
+
+  }, [users]);
+
+
   const addUser = user => {
     setUsers([...users, user]);
     // console.log(user);
+  };
+ 
+  const createSearchedUsers = (search) => {
+    if(search) {
+      const filteredUsers = users.filter(user => {
+        return user.name === search;
+      });
+      setDisplayedUsers(filteredUsers);
+    } else {
+      setDisplayedUsers(users);
+    }
   };
 
   return (
@@ -50,10 +74,10 @@ function App() {
             <UserForm addUserFunction={addUser} />
           </div>
 
-          <SearchForm />
+          <SearchForm searchFunction={createSearchedUsers} setSearching={setSearching}/>
 
           <div className='users'>
-            <Users userList={users} setUsers={setUsers}/>
+            <Users userList={displayedUsers} setUsers={setUsers}/>
           </div>
         </div>
       </Container>
