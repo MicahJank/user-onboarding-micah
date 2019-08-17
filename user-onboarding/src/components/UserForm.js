@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Field, withFormik } from 'formik';
+import { Form, Field, withFormik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import styled from 'styled-components';
@@ -32,16 +32,12 @@ const FormContainer = styled.div`
            margin-top: 20px;
         }
 
-        p {
-            align-self: flex-start;
+        div {
+            color: red;
+            position: relative;
+            left: 8px;
         }
     }
-`;
-
-const Error = styled.p`
-    position: relative;
-    color: red;
-    margin: 0;
 `;
 
 const UserForm = ( { errors, touched, values, status, addUserFunction } ) => {
@@ -61,17 +57,14 @@ const UserForm = ( { errors, touched, values, status, addUserFunction } ) => {
         <FormContainer> 
             <Form>
                 <Field type='text' name='name' placeholder='Name' />
-                {touched.name && errors.name && (
-                    <Error>{errors.name}</Error>
-                )}
+                <ErrorMessage name='name' component='div' />
+
                 <Field type='email' name='email' placeholder='Email' />
-                {touched.email && errors.email && (
-                    <Error>{errors.email}</Error>
-                )}
+                <ErrorMessage name='email' component='div' />
+
                 <Field type='password' name='password' placeholder='Password' />
-                {touched.password && errors.password && (
-                    <Error>{errors.password}</Error>
-                )}
+                <ErrorMessage name='password' component='div' />
+
                 <Field component='select' name='dropdown' placeholder='Please Select'>
                     <option>Please Select A Position</option>
                     <option value='UI Developer'>UI Developer</option>
@@ -79,13 +72,13 @@ const UserForm = ( { errors, touched, values, status, addUserFunction } ) => {
                     <option value='Back End Developer'>Back-End Developer</option>
                     <option value='Coffee Maker'>Person Who Makes Coffee</option>
                 </Field>
+
                 <label>
                     <Field type='checkbox' name='tos' checked={values.tos}/>
                     Terms of Service
                 </label>
-                {touched.tos && errors.tos && (
-                    <Error>{errors.tos}</Error>
-                )}
+                <ErrorMessage name='tos' component='div' />
+                
                 <button type='submit'>Register</button>
             </Form>
         </FormContainer>
