@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { Route } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 
 import UserForm from './components/UserForm.js';
 import Users from './components/Users.js';
@@ -9,11 +9,13 @@ import SearchForm from './components/SearchForm.js';
 // props are the state and fucntions that the components need
 const AppRouter = ( { users, setUsers, displayedUsers, addUser, createSearchedUsers } ) => {
 
-  
-
     return (
         <>
-        <Route path={'/'} render={(props) => <UserForm {...props} addUserFunction={addUser} /> } />
+        <div className='navigation'>
+            <NavLink exact to={'/'}>Register</NavLink>
+            <NavLink to={'/search'}>Search</NavLink>
+        </div>
+        <Route exact path={'/'} render={(props) => <UserForm {...props} addUserFunction={addUser} /> } />
         <Route path={'/search'} render={(props) => (
             <>
             <SearchForm {...props} searchFunction={createSearchedUsers} />

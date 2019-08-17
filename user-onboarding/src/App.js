@@ -26,6 +26,26 @@ const Container = styled.div`
     top: 0;
     height: 100%;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      width: 170px;
+      font-size: 1.3rem;
+
+      a {
+        text-decoration: none;
+      }
+
+      .active {
+        text-decoration: underline;
+      }
+    }
   }
 
 `;

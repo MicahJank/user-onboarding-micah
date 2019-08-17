@@ -7,6 +7,7 @@ import styled from 'styled-components';
 const FormContainer = styled.div`
     display: flex;
     justify-content: center;
+    margin-bottom: 400px;
     
     form {
         display: flex;
@@ -19,6 +20,10 @@ const FormContainer = styled.div`
             font-size: 1rem;
             border: none;
             align-self: center;
+        }
+
+        input:first-child {
+            margin-top: 5px;
         }
 
         button {
