@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import UserForm from './components/UserForm.js';
 import Users from './components/Users.js';
+import SearchForm from './components/SearchForm.js';
 
 import styled from 'styled-components';
 
@@ -48,6 +49,9 @@ function App() {
           <div className='user-form'>
             <UserForm addUserFunction={addUser} />
           </div>
+
+          <SearchForm />
+
           <div className='users'>
             <Users userList={users} setUsers={setUsers}/>
           </div>
