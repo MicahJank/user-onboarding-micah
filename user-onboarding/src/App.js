@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import UserForm from './components/UserForm.js';
-import Users from './components/Users.js';
-import SearchForm from './components/SearchForm.js';
+import AppRouter from './AppRouter.js';
 
 import styled from 'styled-components';
 
@@ -41,7 +39,6 @@ function App() {
   useEffect(() => {
 
     setDisplayedUsers(users);
-    console.log('users changed');
 
   }, [users]);
 
@@ -61,23 +58,12 @@ function App() {
     }
   };
 
-  console.log('users: ', users);
-  console.log('displayedUsers: ', displayedUsers);
-
   return (
     <div className="App">
       <Container>
         <div className='background'></div>
         <div className='main'>
-          <div className='user-form'>
-            <UserForm addUserFunction={addUser} />
-          </div>
-
-          <SearchForm searchFunction={createSearchedUsers} />
-
-          <div className='users'>
-            <Users users={users} displayedUsers={displayedUsers} setUsers={setUsers}/>
-          </div>
+          <AppRouter users={users} setUsers={setUsers} displayedUsers={displayedUsers} addUser={addUser} createSearchedUsers={createSearchedUsers}/>
         </div>
       </Container>
     </div>
