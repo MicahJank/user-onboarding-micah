@@ -104,12 +104,13 @@ const formikHOC = withFormik({
         tos: Yup.bool().oneOf([true], 'Terms of Service required')
     }),
     // this sets ups submitting the form
-   handleSubmit(values, { setStatus, resetForm }) {
+   handleSubmit(values, { setStatus, resetForm, setSubmitting }) {
        axios.post('https://reqres.in/api/users', values)
         .then(apiData => {
             // console.log('res: ', apiData);
             setStatus(apiData.data);
             resetForm();
+            // setSubmitting(false);
         })
         .catch(err => alert(err));
    }

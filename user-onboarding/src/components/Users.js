@@ -7,13 +7,10 @@ import User from './User.js';
 
 
 const UsersContainer = styled.div`
-    width: 100%;
-    height: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 20px;
 `;
 
 const Users = ( { userList, setUsers } ) => {

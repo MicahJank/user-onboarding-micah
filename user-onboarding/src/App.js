@@ -22,13 +22,13 @@ const Container = styled.div`
     background-size: cover;
   }
 
-  .user-form {
+  .main {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    height: 100%;
+    width: 100%;
   }
- 
+
 `;
 
 function App() {
@@ -44,9 +44,13 @@ function App() {
     <div className="App">
       <Container>
         <div className='background'></div>
-        <div className='user-form'>
-          <UserForm addUserFunction={addUser} />
-          <Users userList={users} setUsers={setUsers}/>
+        <div className='main'>
+          <div className='user-form'>
+            <UserForm addUserFunction={addUser} />
+          </div>
+          <div className='users'>
+            <Users userList={users} setUsers={setUsers}/>
+          </div>
         </div>
       </Container>
     </div>
