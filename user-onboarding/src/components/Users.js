@@ -7,9 +7,7 @@ import User from './User.js';
 
 
 const UsersContainer = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+ 
     margin-top: 20px;
 `;
 

@@ -5,6 +5,8 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 const FormContainer = styled.div`
+    display: flex;
+    justify-content: center;
 
     input {
         margin: 20px 0;

@@ -15,14 +15,16 @@ const AppRouter = ( { users, setUsers, displayedUsers, addUser, createSearchedUs
             <NavLink exact to={'/'}>Register</NavLink>
             <NavLink to={'/search'}>Search</NavLink>
         </div>
-        <Route exact path={'/'} render={(props) => <UserForm {...props} addUserFunction={addUser} /> } />
-        <Route path={'/search'} render={(props) => (
-            <>
-            <SearchForm {...props} searchFunction={createSearchedUsers} />
-            <Users {...props} users={users} displayedUsers={displayedUsers} setUsers={setUsers} />
-            </>
-            )
-        } />
+        <div className='forms'>
+            <Route exact path={'/'} render={(props) => <UserForm {...props} addUserFunction={addUser} /> } />
+            <Route path={'/search'} render={(props) => (
+                <>
+                <SearchForm {...props} searchFunction={createSearchedUsers} />
+                <Users {...props} users={users} displayedUsers={displayedUsers} setUsers={setUsers} />
+                </>
+                )
+            } />
+        </div>
         </>
     );
 };

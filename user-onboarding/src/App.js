@@ -33,6 +33,8 @@ const Container = styled.div`
     flex-direction: column;
 
     .navigation {
+      position: absolute;
+      top: 25%;
       display: flex;
       justify-content: space-between;
       width: 170px;
@@ -40,11 +42,22 @@ const Container = styled.div`
 
       a {
         text-decoration: none;
+        color: #00476b;
       }
 
       .active {
         text-decoration: underline;
+        color: #0088CC;
       }
+    }
+
+    .forms {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      position: absolute;
+      top: 28%;
     }
   }
 
